@@ -3,7 +3,7 @@ import * as model from './model.js';
 // import reset hash function
 import { resetHash, changeIdUrl, timeout } from './helpers.js';
 // import the timeout for close window
-import { MODAL_CLOSE_SEC } from './config.js';
+import { MODAL_CLOSE_SEC, TRANSITION_TIME } from './config.js';
 // import views
 import recipeView from './views/recipeView.js';
 import searchView from './views/searchView.js';
@@ -125,11 +125,11 @@ const controlAddRecipe = async function (newRecipe) {
     console.error('💥', err);
   } finally {
     // close add recipe window
-    await timeout(2, false);
+    await timeout(MODAL_CLOSE_SEC, false);
     addRecipeView.toggleWindow();
 
     // render form
-    await timeout(2, false);
+    await timeout(TRANSITION_TIME, false);
     addRecipeView.render(null, true, false);
   }
 };
