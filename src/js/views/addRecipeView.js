@@ -12,6 +12,7 @@ class AddRecipeView extends View {
   _message = 'Recipe was successfully uploaded';
   constructor() {
     super();
+    this.render();
     this._addHandlerShowWindow();
     this._addHandlerCloseWindow();
   }
