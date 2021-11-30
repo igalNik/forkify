@@ -4,9 +4,9 @@ import View from './view.js';
 import icons from 'url:../../img/icons.svg';
 
 // import fractional library to show fraction instead of float numbers
-import { Fractional } from 'fractional';
+// import { Fractional } from 'fractional';
 
-// from web! Fraction not worked
+// from web! Fractional not worked
 import { numberToFraction } from '../helpers.js';
 
 class RecipeView extends View {
