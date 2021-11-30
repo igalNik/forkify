@@ -140,5 +140,8 @@ const init = function () {
   bookmarksView.addHandlerRender(controlBookmarks);
   addRecipeView.addHandlerUpload(controlAddRecipe);
 };
-
+const newFeature = function () {
+  console.log('new feature branch');
+};
+newFeature();
 init();
