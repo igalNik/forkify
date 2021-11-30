@@ -6,6 +6,9 @@ import icons from 'url:../../img/icons.svg';
 // import fractional library to show fraction instead of float numbers
 import { Fractional } from 'fractional';
 
+// from web! Fraction not worked
+import { numberToFraction } from '../helpers.js';
+
 class RecipeView extends View {
   _parentElement = document.querySelector('.recipe');
   _errorMessage = `We could not find that recipe. please try another one!`;
@@ -37,7 +40,7 @@ class RecipeView extends View {
   }
 
   _fractional(number) {
-    return Number.isFinite(number) ? new Fraction(number).toString() : '';
+    return Number.isFinite(number) ? numberToFraction(number).toString() : '';
   }
 
   _generateMarkup() {
