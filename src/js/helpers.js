@@ -1,12 +1,16 @@
 import { async } from 'regenerator-runtime';
 import { TIMEOUT_SEC } from './config';
 
-export const timeout = async function (seconds) {
-  return new Promise(function (_, reject) {
+export const timeout = async function (seconds, isRequest = true) {
+  return new Promise(function (resolve, reject) {
     setTimeout(function () {
-      reject(
-        new Error(`Request took too long! Timeout after ${seconds} seconds`)
-      );
+      if (isRequest)
+        reject(
+          new Error(`Request took too long! Timeout after ${seconds} seconds`)
+        );
+      else {
+        resolve(`${seconds} seconds over`);
+      }
     }, seconds * 1000);
   });
 };

@@ -110,11 +110,11 @@ const controlAddRecipe = async function (newRecipe) {
     // 2. Upload the new recipe
     await model.uploadRecipe(newRecipe);
 
-    // 3. Render recipe
-    recipeView.render(model.state.recipe);
-
-    // 4. Success message
+    // 3. Success message
     addRecipeView.renderMessage();
+
+    // 4. Render recipe
+    recipeView.render(model.state.recipe);
 
     // 5. Render bookmark view
     bookmarksView.render(model.state.bookmarks);
@@ -124,9 +124,12 @@ const controlAddRecipe = async function (newRecipe) {
   } catch (err) {
     console.error('💥', err);
   } finally {
-    await timeout(2);
+    // close add recipe window
+    await timeout(2, false);
     addRecipeView.toggleWindow();
-    await timeout(2);
+
+    // render form
+    await timeout(2, false);
     addRecipeView.render(null, true, false);
   }
 };
@@ -140,8 +143,5 @@ const init = function () {
   bookmarksView.addHandlerRender(controlBookmarks);
   addRecipeView.addHandlerUpload(controlAddRecipe);
 };
-const newFeature = function () {
-  console.log('new feature branch');
-};
-newFeature();
+
 init();
